@@ -1,8 +1,9 @@
 #include <iostream>
+#include <stdlib.h>
 using namespace std;
 class employee
 {
-    //Done
+
     int id;
     string desg;
     string name;
@@ -197,15 +198,17 @@ int main()
     int coh = 0;
     while (coh != 6)
     {
-        cout << "\n  1.Add Employee.";
-        cout << "\n  2.Display Employee Info.";
-        cout << "\n  3.Search info.";
-        cout << "\n  4.Delete.";
-        cout << "\n  5.Edit Employee data. ";
+        cout << "\n  1.Add Employee Info.";
+        cout << "\n  2.Delete Employee Info."; //display
+        cout << "\n  3.Edit Employee Info"; //search
+        cout << "\n  4.Search Employee Info.";     //delete
+        cout << "\n  5.Display Employee Info. ";  //edit
         cout << "\n  6.Exit Program. \n";
 
         cout << "\n  Enter Your Choice: ";
         cin >> coh;
+       // cin.clear();
+       //cin.ignore(10000, '\n');
         switch (coh)
         {
 
@@ -218,19 +221,29 @@ int main()
             cout << "\n  Enter Employee ID: ";
             cin >> id;
             cout << "\n  Enter Employee Name: ";
-            cin >> name;
+            cin >> ws;
+            //cin >> name;
+            getline(cin,name);
             cout << "\n  Enter Employee Designation: ";
-            cin >> desg;
+            cin >> ws;
+            //cin >> desg;
+            getline(cin,desg);
             cout << "\n  Enter Employee Department: ";
-            cin >> dept;
+            cin >> ws;
+            //cin >> dept;
+            getline(cin,dept);
             employee emp1(id, name, desg, dept);
             ob.addemp(emp1);
+
+            system("clear");
         }
         break;
-        case 2:
+        case 5:
+        {
             ob.DisplayallEmp();
-            break;
-        case 3:
+        }
+        break;
+        case 4:
         {
             int id;
             cout << "\nEnter the id to search : ";
@@ -238,7 +251,7 @@ int main()
             ob.search(id);
         }
         break;
-        case 4:
+        case 2:
         {
             int id;
             cout << "\nEnter the id to Delete  : ";
@@ -246,12 +259,13 @@ int main()
             ob.Remove(id);
         }
         break;
-        case 5:
+        case 3:
         {
             int id;
             cout << "\n Enter id to edit info : ";
             cin >> id;
             ob.editinfo(id);
+            system("clear");
         }
         break;
         case 6:
