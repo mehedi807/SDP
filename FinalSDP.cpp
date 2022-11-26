@@ -1,5 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
+#include <string>
+#include <iomanip>
 using namespace std;
 class employee
 {
@@ -207,8 +209,6 @@ int main()
 
         cout << "\n  Enter Your Choice: ";
         cin >> coh;
-       // cin.clear();
-       //cin.ignore(10000, '\n');
         switch (coh)
         {
 
