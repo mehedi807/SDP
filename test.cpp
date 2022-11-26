@@ -113,7 +113,10 @@ int main()
     return 0;
 }
 void add_info(){
-    emp.get_info();
+	file.open("data.dat", ios::app | ios:: binary);
+       emp.get_info();
+	   file.write((char*)&emp, sizeof(emp));
+	file.close();
 }
 void delete_info(){
 
@@ -125,7 +128,13 @@ void search_info(){
 
 }
 void show_info(){
-    emp.put_info();
+	file.open("data.dat", ios::app | ios:: binary);
+	file.read((char*)&emp, sizeof(emp));
+	while(!file.eof()){
+    	emp.put_info();
+		file.read((char*)&emp, sizeof(emp));
+	}
+	file.close();
 }
 
 
