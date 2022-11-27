@@ -40,19 +40,19 @@ void employee ::get_info(void)
 
 	cout << "\n  Enter Employee ID: ";
 	cin >> id;
-	fflush(stdin);
+	// fflush(stdin);
 	cout << "\n  Enter Employee Name: ";
-	cin >> name;
-	// getline(cin,name);
-	fflush(stdin);
+	cin >> ws;
+	getline(cin, name);
+	// fflush(stdin);
 	cout << "\n  Enter Employee Designation: ";
-	cin >> des;
-	// getline(cin,des);
-	fflush(stdin);
+	// cin >> des;
+	getline(cin, des);
+	// fflush(stdin);
 	cout << "\n  Enter Employee Department: ";
-	cin >> dep;
-	//  getline(cin,dep);
-	fflush(stdin);
+	// cin >> dep;
+	getline(cin, dep);
+	// fflush(stdin);
 }
 void employee ::put_info(void)
 {
@@ -112,7 +112,7 @@ int main()
 		{
 			system("clear");
 			search_info();
-			
+
 			break;
 		}
 
@@ -131,6 +131,7 @@ int main()
 		}
 		}
 	}
+	// remove("date.dat");
 	return 0;
 }
 void add_info()
@@ -143,10 +144,52 @@ void add_info()
 }
 void delete_info()
 {
+	int id;
+	cout << "Enter Id to Delete : ";
+	cin >> id;
+	ofstream file2;
+	file2.open("dtemp.dat", ios::out | ios::binary);
+	file.open("data.dat", ios::in | ios::binary);
+
+	file.read((char *)&emp, sizeof(emp));
+	while (!file.eof())
+	{
+		if (id != emp.get_id())
+		{
+			file2.write((char *)&emp, sizeof(emp));
+		}
+		file.read((char *)&emp, sizeof(emp));
+	}
+	file2.close();
+	file.close();
+	remove("date.dat");
+	rename("dtemp.dat", "data.dat");
 }
-void edit_info()
-{
-}
+
+// void edit_info()
+// {
+// 	int id;
+// 	cout << " Enter ID to modify : ";
+// 	cin >> id;
+
+// 	file.open("data.dat", ios::in | ios::out | ios::binary);
+// 		while(file.read((char *)&emp, sizeof(emp)));
+// 		{
+// 			if(emp.get_id() == id){
+// 				//string n;
+// 				int id;
+// 				cin>>id;
+// 				cout<<" Enter New Name : ";
+// 			//	cin>>n;
+// 				emp.update_id(id);    //update name
+// 				int pos = sizeof(emp);
+// 				file.seekp(-pos, ios::cur);
+// 				file.write((char *)&emp, sizeof(emp));
+// 			}
+
+// 		}
+// 		file.close();
+// }
 void search_info()
 {
 	int id, flag = 0;
