@@ -91,35 +91,41 @@ int main()
 
 		case 1:
 		{
+			system("clear");
 			add_info();
-			// system("clear");
 			break;
 		}
 		case 2:
 		{
+			system("clear");
 			delete_info();
 			break;
 		}
 		case 3:
 		{
+			system("clear");
 			edit_info();
 			break;
 		}
 
 		case 4:
 		{
+			system("clear");
 			search_info();
+			
 			break;
 		}
 
 		case 5:
 		{
+			system("clear");
 			show_info();
 			break;
 		}
 		case 6:
 		default:
 		{
+			system("clear");
 			cout << "   #### Invalid Choice ####" << endl;
 			break;
 		}
